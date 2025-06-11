@@ -61,8 +61,21 @@ export class PostController {
 
   async createPost(req: Request, res: Response) {
     try {
-      const validatedData = CreatePostSchema.parse(req.body);
-      const post = await postService.createPost(validatedData);
+      const { title, content, authorEmail } = req.body;
+
+      if (!title || !authorEmail) {
+        return res.status(400).json({
+          success: false,
+          error: "Title and author email are required",
+        });
+      }
+
+      // Handle authorEmail by finding or creating user (for backwards compatibility)
+      const post = await postService.createPostWithEmail({
+        title,
+        content,
+        authorEmail,
+      });
 
       const response: ApiResponse<PostWithAuthor> = {
         success: true,

@@ -41,12 +41,18 @@ export default function Home() {
       setFetchLoading(true);
       const response = await fetch("http://localhost:3001/api/posts");
       if (!response.ok) throw new Error("Failed to fetch posts");
-      const data = await response.json();
-      setPosts(data);
-      toast({
-        title: "Success",
-        description: `Fetched ${data.length} posts`,
-      });
+      const result = await response.json();
+
+      // Handle new API response format
+      if (result.success && result.data) {
+        setPosts(result.data);
+        toast({
+          title: "Success",
+          description: `Fetched ${result.data.length} posts`,
+        });
+      } else {
+        throw new Error(result.error || "Failed to fetch posts");
+      }
     } catch (error) {
       console.error("Error fetching posts:", error);
       toast({
@@ -86,16 +92,22 @@ export default function Home() {
 
       if (!response.ok) throw new Error("Failed to create post");
 
-      const newPost = await response.json();
-      setPosts((prev) => [...prev, newPost]);
-      setTitle("");
-      setContent("");
-      setAuthorEmail("");
+      const result = await response.json();
 
-      toast({
-        title: "Success",
-        description: "Post created successfully",
-      });
+      // Handle new API response format
+      if (result.success && result.data) {
+        setPosts((prev) => [...prev, result.data]);
+        setTitle("");
+        setContent("");
+        setAuthorEmail("");
+
+        toast({
+          title: "Success",
+          description: result.message || "Post created successfully",
+        });
+      } else {
+        throw new Error(result.error || "Failed to create post");
+      }
     } catch (error) {
       console.error("Error creating post:", error);
       toast({
