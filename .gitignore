@@ -1,7 +1,29 @@
 node_modules
 
 .env
+.env.local
+.env.*.local
+.env.prod
+.env.production
 
 .turbo
 apps/web/.next
 info.md
+
+# Production files
+docker-compose.override.yml
+ssl/
+logs/
+.docker/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build outputs
+dist/
+build/
