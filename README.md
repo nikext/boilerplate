@@ -12,6 +12,7 @@ A modern, production-ready boilerplate starter project with Next.js, Node.js, Ty
 - **🔄 API**: RESTful Node.js API with Express
 - **🐳 Docker**: Ready for local development with Docker Compose
 - **📦 Shared Packages**: Reusable types and schemas across frontend/backend
+- **🧠 Cursor Support**: Optimized for development in Cursor editor
 
 ## 📁 Project Structure
 
@@ -25,6 +26,8 @@ boilerplate/
 │   └── database/         # Prisma setup
 ├── package.json
 ├── turbo.json
+├── .cursorrc             # Cursor editor configuration
+├── CURSOR_GUIDE.md       # Detailed guide for Cursor
 └── docker-compose.yml
 ```
 
@@ -32,9 +35,10 @@ boilerplate/
 
 ### Prerequisites
 
-- Node.js 18+ 
-- npm or yarn
+- Node.js 18+
+- npm v9.0.0+ (recommended) or yarn
 - Docker and Docker Compose (for local database)
+- [Cursor Editor](https://cursor.sh/) (recommended)
 
 ### 1. Clone and Install
 
@@ -108,14 +112,17 @@ DIRECT_URL="postgresql://username:password@ep-example.us-east-1.aws.neon.tech/ne
 ## 📚 Available Scripts
 
 ### Root Level
+
 - `npm run dev` - Start all apps in development
 - `npm run build` - Build all apps
 - `npm run lint` - Lint all packages
+- `npm run format` - Format all files with Prettier
 - `npm run db:generate` - Generate Prisma client
 - `npm run db:push` - Push schema to database
 - `npm run db:studio` - Open Prisma Studio
 
 ### Individual Apps
+
 ```bash
 # Frontend (apps/web)
 cd apps/web
@@ -123,7 +130,7 @@ npm run dev        # Start Next.js dev server
 npm run build      # Build for production
 npm run start      # Start production server
 
-# Backend (apps/api)  
+# Backend (apps/api)
 cd apps/api
 npm run dev        # Start API dev server
 npm run build      # Build TypeScript
@@ -137,6 +144,7 @@ npm run db:seed    # Seed database
 ## 🏗️ Architecture
 
 ### Frontend (Next.js)
+
 - **App Router**: Using the new Next.js 13+ app directory
 - **Server Components**: For better performance
 - **Tailwind CSS**: Utility-first CSS framework
@@ -144,6 +152,7 @@ npm run db:seed    # Seed database
 - **TypeScript**: Full type safety
 
 ### Backend (Node.js)
+
 - **Express**: Web framework
 - **TypeScript**: Full type safety
 - **Zod**: Runtime validation
@@ -152,8 +161,23 @@ npm run db:seed    # Seed database
 - **Helmet**: Security middleware
 
 ### Shared Packages
+
 - **@boilerplate/shared**: Common types and Zod schemas
 - **@boilerplate/database**: Prisma client and database utilities
+
+## 🧠 Cursor Editor Support
+
+This project includes special configurations for the [Cursor Editor](https://cursor.sh/):
+
+- `.cursorrc` - Editor settings optimized for this project
+- `CURSOR_GUIDE.md` - Comprehensive guide for working with this project in Cursor
+
+See the [CURSOR_GUIDE.md](./CURSOR_GUIDE.md) for detailed instructions on:
+
+- Code style and conventions
+- Debugging configurations
+- Recommended shortcuts
+- Best practices
 
 ## 🔧 Development
 
@@ -197,16 +221,19 @@ npx shadcn-ui@latest add button
 ## 🚢 Deployment
 
 ### Frontend (Vercel)
+
 1. Connect your GitHub repo to Vercel
 2. Set build command: `cd apps/web && npm run build`
 3. Set environment variables
 
 ### Backend (Railway/Render)
+
 1. Set build command: `cd apps/api && npm run build`
 2. Set start command: `cd apps/api && npm run start`
 3. Set environment variables
 
 ### Database (Neon)
+
 1. Create Neon database
 2. Update production environment variables
 3. Run migrations: `npx prisma migrate deploy`

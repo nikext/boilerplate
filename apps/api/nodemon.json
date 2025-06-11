@@ -1,0 +1,10 @@
+{
+  "watch": ["src", "../shared"],
+  "ext": "ts,json",
+  "ignore": ["src/**/*.spec.ts", "node_modules"],
+  "exec": "tsx src/index.ts",
+  "events": {
+    "restart": "echo \"[API] Restarting due to changes...\"",
+    "crash": "echo \"[API] Server crashed - waiting for file changes before restarting\""
+  }
+} 

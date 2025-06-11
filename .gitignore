@@ -4,3 +4,4 @@ node_modules
 
 .turbo
 apps/web
+info.md

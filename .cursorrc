@@ -1,0 +1,57 @@
+{
+  "formatOnSave": true,
+  "editor": {
+    "tabSize": 2,
+    "insertSpaces": true,
+    "defaultFormatter": "prettier"
+  },
+  "typescript": {
+    "preferences": {
+      "importModuleSpecifierPreference": "relative",
+      "quoteStyle": "double"
+    },
+    "suggest": {
+      "completeFunctionCalls": true
+    }
+  },
+  "javascript": {
+    "preferences": {
+      "importModuleSpecifierPreference": "relative",
+      "quoteStyle": "double"
+    }
+  },
+  "files": {
+    "exclude": {
+      "**/node_modules": true,
+      "**/dist": true,
+      "**/.next": true
+    }
+  },
+  "terminal": {
+    "defaultProfile": "pwsh"
+  },
+  "tailwindCSS": {
+    "emmetCompletions": true,
+    "classAttributes": ["class", "className"]
+  },
+  "debug": {
+    "configurations": [
+      {
+        "name": "Next.js: debug web",
+        "type": "node",
+        "request": "launch",
+        "cwd": "${workspaceFolder}/apps/web",
+        "runtimeExecutable": "npm",
+        "runtimeArgs": ["run", "dev"]
+      },
+      {
+        "name": "API: debug server",
+        "type": "node",
+        "request": "launch",
+        "cwd": "${workspaceFolder}/apps/api",
+        "runtimeExecutable": "npm",
+        "runtimeArgs": ["run", "dev"]
+      }
+    ]
+  }
+} 
