@@ -3,5 +3,5 @@ node_modules
 .env
 
 .turbo
-apps/web
+apps/web/.next
 info.md
